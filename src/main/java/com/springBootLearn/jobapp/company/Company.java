@@ -2,6 +2,7 @@ package com.springBootLearn.jobapp.company;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springBootLearn.jobapp.job.Job;
+import com.springBootLearn.jobapp.review.Review;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,6 +19,18 @@ public class Company {
     @JsonIgnore
     @OneToMany (mappedBy = "company", cascade=CascadeType.ALL)
     private List<Job> jobs;
+
+
+    @OneToMany (mappedBy = "company", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     // Default constructor for persistence api
     public Company() {
